@@ -24,7 +24,7 @@ def take_screenshot(driver, name):
         os.makedirs(folder)
     path = os.path.join(folder, f"{name}.png")
     driver.save_screenshot(path)
-    print(f"📸 Screenshot saved: {path}")
+    print("Screenshot saved: {path}")
 
 def test_scroll_and_capture(driver):
     wait = WebDriverWait(driver, 10)
