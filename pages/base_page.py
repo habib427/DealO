@@ -18,7 +18,7 @@ class BasePage:
             os.makedirs(folder)
         filepath = os.path.join(folder, f"{browser_name}_{name}")
         self.driver.save_screenshot(filepath)
-        print(f"📸 Screenshot saved: {filepath}")
+        print("Screenshot saved: {filepath}")
 
     def __init__(self, driver):
         self.driver = driver

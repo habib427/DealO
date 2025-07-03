@@ -10,21 +10,13 @@ def test_search_functionality(driver):
     wait = WebDriverWait(driver, 10)
 
     try:
-        # Click search icon
-        search_icon = wait.until(EC.element_to_be_clickable((
-            By.XPATH, "//a[@class='search_pop m-0 mr-2 my-3 p-0 hide_m d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block']//i[@class='fa-solid fa-magnifying-glass']"
-        )))
+        search_icon = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[@class='search_pop m-0 mr-2 my-3 p-0 hide_m d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block']//i[@class='fa-solid fa-magnifying-glass']")))
         search_icon.click()
-
-        # Type in search box
         search_box = wait.until(EC.visibility_of_element_located((By.ID, "search_id")))
         search_box.send_keys("burger")
         search_box.send_keys(Keys.RETURN)
-
-        time.sleep(3)  # wait for results
-
-        assert "burger" in driver.page_source.lower(), "❌ Burger not found in page source"
-        print("✅ Search test passed.")
-
+        time.sleep(3)
+        assert "burger" in driver.page_source.lower(),"Burger not found in page source"
+        print("Search test passed.")
     except Exception as e:
-        pytest.fail(f"❌ Test failed: {str(e)}")
+        pytest.fail("Test failed: {str(e)}")

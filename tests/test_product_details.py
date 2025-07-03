@@ -12,21 +12,15 @@ def test_product_detail_page(driver):
     lifestyle = driver.find_element(By.LINK_TEXT, "Lifestyle")
     lifestyle.click()
     time.sleep(2)
-
-    product = WebDriverWait(driver, 10).until(
-        EC.element_to_be_clickable((By.XPATH, "//div[@class='online_store_grid_sec']//div[2]/div[1]"))
-    )
+    product = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.XPATH, "//div[@class='online_store_grid_sec']//div[2]/div[1]")))
     product.click()
-
-    title = WebDriverWait(driver, 10).until(
-        EC.visibility_of_element_located((By.CLASS_NAME, "product-title"))).text
+    title = WebDriverWait(driver, 10).until(EC.visibility_of_element_located((By.CLASS_NAME, "product-title"))).text
     img = driver.find_element(By.CSS_SELECTOR, ".carousel-inner img").get_attribute("src")
     dropdown = driver.find_element(By.CSS_SELECTOR, "select")
-
     assert title.strip(), "Product title is missing"
     assert any(img.endswith(ext) for ext in [".jpg", ".jpeg", ".png", ".webp"]), "Invalid product image"
     assert dropdown.is_displayed(), "Outlet dropdown not shown"
 
-    base.scroll_to_bottom()
+    base.scroll_to_down()
     base.scroll_to_top()
     base.take_screenshot("product_detail_scrolled.png", driver.capabilities['browserName'])

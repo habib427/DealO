@@ -1,12 +1,11 @@
 import time
 import pytest
 from pages.base_page import BasePage
-from pages.home_page import HomePage
 
 @pytest.mark.parametrize("category", ["Home", "Food", "Online Stores", "Lifestyle"])
 def test_category_navigation(driver, category):
     base = BasePage(driver)
-    HomePage(driver).select_city()
+    driver.get("https://dealo.com.pk/home/islamabad")
 
     link = driver.find_element("link text", category)
     driver.execute_script("arguments[0].scrollIntoView(true);", link)

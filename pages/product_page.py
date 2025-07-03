@@ -8,8 +8,7 @@ class ProductPage:
         self.wait = WebDriverWait(driver, 10)
 
     def open_from_lifestyle(self):
-        # Assumes already navigated to lifestyle category
-        print("🛒 Clicking first product from Lifestyle...")
+        print("Clicking second product from Lifestyle")
         product_xpath = "//body/div/div[@class='online_store_sec online_store_page']/div[@class='container']/div[@class='online_store_grid_sec']/div[@class='row']/div[2]/div[1]"
         first_product = self.wait.until(EC.element_to_be_clickable((By.XPATH, product_xpath)))
         self.driver.execute_script("arguments[0].scrollIntoView(true);", first_product)
