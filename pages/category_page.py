@@ -15,8 +15,8 @@ def test_category_navigation(driver, category):
 
     base.scroll_like_user()
     base.scroll_to_top()
-    base.take_screenshot(f"{category}_page.png", driver.capabilities['browserName'])
+    base.take_screenshot("{category}_page.png", driver.capabilities['browserName'])
 
-    if category != "Home":
-        products = driver.find_elements("css selector", ".card.card-product.card-product-list")
-        assert len(products) > 0, f"No products found in {category}"
+    if category  != "Home":
+        products = driver.find_elements("css selector", "card.card-product.card-product-list")
+        assert len(products) > 0, "No products found in {category}"
