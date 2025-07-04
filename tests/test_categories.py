@@ -22,7 +22,7 @@ def take_screenshot(driver, name):
     folder = "screenshots"
     if not os.path.exists(folder):
         os.makedirs(folder)
-    path = os.path.join(folder, f"{name}.png")
+    path = os.path.join(folder,"{name}.png")
     driver.save_screenshot(path)
     print("Screenshot saved: {path}")
 
@@ -35,21 +35,17 @@ def test_scroll_and_capture(driver):
     categories = ["Home", "Food", "Online Stores", "Lifestyle"]
 
     for category in categories:
-        print("Navigating to: {category}")
+        print("Navigating to:{category}")
         try:
             link = wait.until(EC.element_to_be_clickable((By.LINK_TEXT, category)))
             driver.execute_script("arguments[0].scrollIntoView(true);", link)
             link.click()
             time.sleep(3)
-
             wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".card.card-product.card-product-list")))
-
-            print("Scrolling to down")
+            print("Scrolling to bottom")
             scroll_to_bottom(driver)
-
             print("Scrolling back to top")
             scroll_to_top(driver)
-
             take_screenshot(driver, category.replace(" ", "_"))
 
         except Exception as e:
