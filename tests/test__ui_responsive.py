@@ -17,7 +17,7 @@ def test_ui_responsiveness(driver, viewport):
     driver.get("https://dealo.com.pk/home/islamabad")
     time.sleep(2)
 
-    print(f"Testing viewport: {name} ({width}x{height})")
+    print("Testing viewport: {name} ({width}x{height})")
 
     assert driver.find_element(By.TAG_NAME, "header").is_displayed(),"Header not visible in {name} view"
     assert driver.find_element(By.CSS_SELECTOR, ".tab-list").is_displayed()," Category tabs not visible in {name} view"
@@ -27,6 +27,6 @@ def test_ui_responsiveness(driver, viewport):
     driver.execute_script("window.scrollTo(0, 0);")
     time.sleep(1)
 
-    filename = f"screenshots/ui_{name.lower()}.png"
+    filename = "screenshots/ui_{name.lower()}.png"
     driver.save_screenshot(filename)
     print("Screenshot saved: {filename}")
