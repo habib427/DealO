@@ -7,5 +7,5 @@ class HomePage:
         self.driver = driver
 
     def open_home_with_city(self, city="islamabad"):
-        self.driver.get(f"https://dealo.com.pk/home/{city}")
+        self.driver.get("https://dealo.com.pk/home/{city}")
 
