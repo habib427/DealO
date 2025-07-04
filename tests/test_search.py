@@ -12,7 +12,7 @@ def test_search_functionality(driver):
     try:
         search_icon = wait.until(EC.element_to_be_clickable((By.XPATH, "//a[@class='search_pop m-0 mr-2 my-3 p-0 hide_m d-none d-sm-none d-md-none d-lg-block d-xl-block d-xxl-block']//i[@class='fa-solid fa-magnifying-glass']")))
         search_icon.click()
-        search_box = wait.until(EC.visibility_of_element_located((By.ID, "search_id")))
+        search_box = wait.until(EC.visibility_of_element_located((By.XPATH, "//input[@id='search_id']")))
         search_box.send_keys("burger")
         search_box.send_keys(Keys.RETURN)
         time.sleep(3)
